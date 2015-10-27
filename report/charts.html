@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Charts</title>
+        <meta charset="UTF-8">
+        <script src="jquery1.min.js"></script>
+        <script src="highcharts.js"></script>
+        <script>
+            $(function () 
+            { 
+                $('#container').highcharts({
+                    chart: {
+                        renderTo: 'container',
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Report'
+                    },
+                    xAxis: {
+                        categories: ['Tasks numbers']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Numbers'
+                        }
+                    },
+                    series: [{
+                        name: 'Jane',
+                        data: [1]
+                    }, {
+                        name: 'John',
+                        data: [5]
+                    },
+                    {
+                        name: 'oct',
+                        data: [3]
+                    },
+                    {
+                        name: 'april',
+                        data: [2]
+                    },
+                    {
+                        name: 'dec',
+                        data: [4]
+                    }
+                ],
+                
+                });
+            });
+        </script>
+        
+   
+    </head>
+    <body>
+        <h2>Charts</h2>
+        <div id="container" style="width:50%; height:400px;"></div>
+        
+     
+    </body>
+</html>

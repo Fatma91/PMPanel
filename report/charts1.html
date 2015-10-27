@@ -1,0 +1,94 @@
+<?php
+// Getting json from url
+ $json = file_get_contents('http://localhost/web.php');
+ // echo $json;
+ $obj = json_decode($json,true);
+ $keys = json_encode (array_keys ($obj) );
+$values = json_encode (array_values ($obj) );
+ ?>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>HighCharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Projects'
+        },
+//        subtitle: {
+//            text: 'Source: WorldClimate.com'
+//        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number Of Projects (per month)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} project</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Projects',
+            data: [49, 71, 106, 129, 144, 176, 135, 148, 216, 194, 95, 54]
+
+        }]
+       
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="highcharts.js"></script>
+<script src="exporting.js"></script>
+<?php
+// Getting json from url
+ $json = file_get_contents('http://localhost/web.php');
+ // echo $json;
+ $obj = json_decode($json,true);
+ // print_r($obje);
+
+foreach($obj AS $prop => $val) 
+{
+    echo '<br/>'. $prop .' - '. $val;
+}
+?>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
